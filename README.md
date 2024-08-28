@@ -1,11 +1,14 @@
 
-# Classic Models Inc. Retail Management System
+# AI Powered Retail Management System
 
 This project is a SQL-based application designed to manage the business operations of Classic Models Inc., a manufacturer of small-scale models of cars, motorcycles, planes, ships, and trains. The application uses a SQLite database to store information about customers, orders, payments, employees, offices, products, and product lines.
 
 ## Project Overview
 
 Classic Models Inc. has a global presence with multiple offices, employees, and customers. This project aims to streamline the company's operations by providing a robust SQL database and a user-friendly Streamlit interface for querying and managing data. The system can handle various tasks such as adding customers, placing orders, recording payments, and managing employees.
+
+Langsmith Trace :- https://smith.langchain.com/public/2f4ee18f-68d7-4fd0-8f0b-c77e1e293741/r
+https://smith.langchain.com/public/7080e332-30ca-4172-b50e-dbce086ed508/r
 
 ## Database Schema
 
@@ -31,7 +34,7 @@ The database schema for Classic Models Inc. includes the following tables:
 
 The Entity-Relationship Diagram (ERD) shows the relationships between the tables in the database:
 
-![ERD Diagram](ERD_Diagram.png)
+![ERD Diagram](https://i.imgur.com/H6q1dAb.png)
 
 ## Setup and Installation
 
@@ -53,7 +56,7 @@ To run this project locally, follow these steps:
 
 ## Usage
 
-- **API Key**: You will need to enter your Groq API key in the sidebar to interact with the language model.
+- **API Key**: You will need to enter your Gemini API key in the sidebar to interact with the language model.
 
 - **Query the Database**: Use the chat interface to interact with the database. You can ask questions or execute commands related to the data stored in the database, such as fetching customer details, placing new orders, or managing employee records.
 
@@ -63,7 +66,4 @@ To run this project locally, follow these steps:
 
 If you want to contribute to this project, please fork the repository and submit a pull request with your changes. Ensure that your code follows the project's coding standards and includes tests for new functionality.
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
 

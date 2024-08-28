@@ -1,21 +1,30 @@
 import streamlit as st
 from pathlib import Path
+import os
+import sqlite3
+import google.generativeai as genai
+from dotenv import load_dotenv, find_dotenv
 from langchain_community.utilities.sql_database import SQLDatabase
 from sqlalchemy import create_engine
 from langchain_community.agent_toolkits.sql.base import create_sql_agent
-from sqlalchemy.pool import StaticPool
 from langchain.agents.agent_types import AgentType
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain_google_genai import ChatGoogleGenerativeAI
-import sqlite3
 
+load_dotenv(find_dotenv())
+os.environ['LANGCHAIN_TRACING_V2'] = 'true'
+os.environ['LANGCHAIN_ENDPOINT'] = 'https://api.smith.langchain.com'
+os.environ['LANGCHAIN_PROJECT'] = 'SQL-Toolkits'
+os.environ['LANGCHAIN_API_KEY'] = os.getenv("LANGCHAIN_API_KEY")
+
+genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 # Initialize the Language Model
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 
 # Set up Streamlit page configuration
 st.set_page_config(page_title="An AI-powered solution for retail management")
-st.title("An intelligent assistant for managing retail operations.")
+st.title("An AI-powered solution for retail management")
 
 # Introduction to Classic Models Inc.
 st.markdown("""
@@ -29,11 +38,6 @@ This tool is designed to interact with Classic Models Inc.'s SQL database to fac
 # Set the SQLite database file path
 dbfilepath = (Path(__file__).parent / "ClassicModels.db").absolute()
 
-# Prompt for Groq API key
-api_key = st.sidebar.text_input(label="Gemini API Key", type="password")
-
-if not api_key:
-    st.info("Please add the Gemini API key")
 
 @st.cache_resource(ttl="2h")
 def configure_db():
